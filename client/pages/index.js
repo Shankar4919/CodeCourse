@@ -7,7 +7,7 @@ const Index = () => {
     <h1>Hello World</h1>
     <p>From next js</p>
     </>
-  )
-}
+  );
+};
 
 export default Index;
