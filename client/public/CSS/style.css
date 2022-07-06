@@ -1,0 +1,13 @@
+.square{
+    border-radius: 0px;
+}
+
+.jumbotron {
+    /* background-image: linear-gradient(to right, #02216b, #3971f1, #02216b); */
+    background-image: url("https://img.freepik.com/free-vector/education-pattern-background-doodle-style_53876-115365.jpg?size=338&ext=jpg");
+    color: rgb(26, 26, 27);
+    font-weight: bold;
+    font-size: 6em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 100px 25px;
+}
