@@ -4,7 +4,7 @@ const router =  express.Router();
 
 import { register } from "../controller/auth";
 
-router.get("/register", register);
+router.post("/register", register);
 
 module.exports = router;
 
