@@ -2,6 +2,8 @@
 import express, { application } from 'express';
 import cors from 'cors';
 
+import { readdirSync } from 'fs';  // readdirSync is a function that reads a directory and returns an array of files
+
 // importing morgan package using import syntax gives an errors so use require syntax to import it
 const morgan = require('morgan');	
 
@@ -20,9 +22,9 @@ app.use((req, res, next) => {
     next();
 });
 
-//route
-app.get('/', (req, res) => {
-    res.send('You hit the end point');
+//router
+readdirSync("./routes").map((r)=>{
+    app.use("/api",require(`./routes/${r}`));
 });
 
 //port
