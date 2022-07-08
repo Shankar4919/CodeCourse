@@ -2,9 +2,9 @@ import express from "express";
 
 const router =  express.Router();
 
-router.get("/register", (req, res) => {
-    res.send("This is register page");
-});
+import { register } from "../controller/auth";
+
+router.get("/register", register);
 
 module.exports = router;
 
