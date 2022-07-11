@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Typography, Divider, Link } from "antd";
+import { Typography, Divider } from "antd";
 import { SyncOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 const { Title } = Typography;
 
@@ -110,10 +111,12 @@ const Register = () => {
             }}
           >
             Already have an account?
-            <a href="/" style={{ color: "red" }}>
-              {" "}
-              Login
-            </a>
+            <Link href="/login">
+              <a href="/" style={{ color: "red" }}>
+                {" "}
+                Login
+              </a>
+            </Link>
           </Title>
         </form>
       </div>
