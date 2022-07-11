@@ -1,6 +1,8 @@
 import User from "../models/user";
 import { hashPassword, comparePassword } from "../utils/auth";
 
+
+// user registration
 export const register = async (req, res) => {
   try {
     // console.log( req.body ); // this is the body of the request (the data that we are sending to the server from the client)
@@ -30,7 +32,7 @@ export const register = async (req, res) => {
     await user.save();
     console.log("saved user", user);
     return res.json({ok: true});
-    
+
   } catch (err) {
     console.log(err);
     return res.status(400).send("Error! Try again");

@@ -22,7 +22,7 @@ const Register = () => {
 
   return (
     <>
-      <h1 className="jumbotron text-center bg-primary">Register</h1>
+
       <div className="container col-md-4 offset-md-4 p-4">
         <form onSubmit={handleSubmit}>
           <input
