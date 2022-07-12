@@ -41,7 +41,7 @@ const Register = () => {
           backgroundColor: "white",
           border:"none",
         }}> */}
-        <Title level={4}>Sign up and Starting Learning</Title>
+        <Title level={5}>Sign up and Starting Learning</Title>
 
         {/* start input form */}
         <form onSubmit={handleSubmit}>
@@ -102,23 +102,24 @@ const Register = () => {
             </button>
           </div>
           <Typography.Paragraph
-            className="mt-2"
             style={{
               textAlign: "center",
+              marginTop: "2rem",
             }}
           >
             By signing up, you agree to our Terms of Use and Privacy Policy
           </Typography.Paragraph>
-          <Divider style={{ border: "0.5px solid #edf0f1" }} />
+          <Divider style={{ border: "0.5px solid #edf0f1", marginTop:"0.5rem" }} />
           <Title
             level={5}
             style={{
               textAlign: "center",
+              marginTop: "-1rem",
             }}
           >
             Already have an account?
             <Link href="/login">
-              <a style={{ color: "red" }}>
+              <a style={{ color: "#ce4c2f" }}>
                 {" "}
                 Login
               </a>
