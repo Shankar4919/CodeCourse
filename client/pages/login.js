@@ -22,7 +22,7 @@ const Login = () => {
         email,
         password,
       });
-      // console.log("login Data", data);
+      console.log("login Data", data);
       toast.success("Login Successful");
       setLoading(false);
     } catch (err) {
@@ -33,12 +33,12 @@ const Login = () => {
   return (
     <>
       <div className="container col-md-4 offset-md-4 p-4 mt-4">
-        {/* <Card
+        <Card
           style={{
             backgroundColor: "white",
             border: "none",
           }}
-        > */}
+        >
           <Title level={5}>Login to your Account</Title>
           
           {/* start form */}
@@ -47,7 +47,7 @@ const Login = () => {
               type="email"
               name="email"
               value={email}
-              className="form-control mb-2 p-1 mt-3"
+              className="form-control mb-2 p-2 mt-3"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
               style={{
@@ -126,10 +126,8 @@ const Login = () => {
           </Title>
           {/*  end sign up link */}
 
-        {/* </Card> */}
+        </Card>
 
-
-        <form></form>
       </div>
     </>
   );
