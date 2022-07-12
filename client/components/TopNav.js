@@ -31,10 +31,14 @@ const TopNav = () => {
         fontWeight: "bold",
         borderSpacing:"black",
         borderBottom: "2px solid #efefef",
+        
       }}
       selectedKeys = {[current]}
     >
-      <Item icon={<AppstoreOutlined />} key="/" onClick={(e)=>setCurrent(e.key)}>
+      <Item icon={<AppstoreOutlined />} key="/" onClick={(e)=>setCurrent(e.key)} style={{
+        alignItems:"center",
+        display:"inline-flex"
+      }}>
         <Link href="/">
           <a>Home</a>
         </Link>
@@ -51,12 +55,18 @@ const TopNav = () => {
         style={{ width: 400, padding: "0.4rem" }}	
       />
 
-      <Item icon={<LoginOutlined />} key="/login" onClick={(e)=>setCurrent(e.key)}>
+      <Item icon={<LoginOutlined />} key="/login" onClick={(e)=>setCurrent(e.key)} style={{
+        alignItems:"center",
+        display:"inline-flex"
+      }}>
         <Link href="/login">
           <a>Login</a>
         </Link>
       </Item>
-      <Item icon={<UserAddOutlined />} key="/register" onClick={(e)=>setCurrent(e.key)}>
+      <Item icon={<UserAddOutlined />} key="/register" onClick={(e)=>setCurrent(e.key)} style={{
+        alignItems:"center",
+        display:"inline-flex"
+      }}>
         <Link href="/register">
           <a>Register</a>
         </Link>
