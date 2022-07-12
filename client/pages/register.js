@@ -37,10 +37,10 @@ const Register = () => {
   return (
     <>
       <div className="container col-md-4 offset-md-4 p-4 mt-4">
-        {/* <Card style={{
+        <Card style={{
           backgroundColor: "white",
           border:"none",
-        }}> */}
+        }}>
         <Title level={5}>Sign up and Starting Learning</Title>
 
         {/* start input form */}
@@ -128,7 +128,7 @@ const Register = () => {
         </form>
         {/* end input form */}
         
-        {/* </Card> */}
+        </Card>
       </div>
     </>
   );
