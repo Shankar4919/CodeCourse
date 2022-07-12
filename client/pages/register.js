@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Typography, Divider } from "antd";
+import { Typography, Divider, Card } from "antd";
 import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
@@ -37,7 +37,13 @@ const Register = () => {
   return (
     <>
       <div className="container col-md-4 offset-md-4 p-4 mt-4">
-        <Title level={4}>Sign up and Starting Learning</Title>
+        {/* <Card style={{
+          backgroundColor: "white",
+          border:"none",
+        }}> */}
+        <Title level={5}>Sign up and Starting Learning</Title>
+
+        {/* start input form */}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -96,29 +102,33 @@ const Register = () => {
             </button>
           </div>
           <Typography.Paragraph
-            className="mt-2"
             style={{
               textAlign: "center",
+              marginTop: "2rem",
             }}
           >
             By signing up, you agree to our Terms of Use and Privacy Policy
           </Typography.Paragraph>
-          <Divider style={{ border: "0.5px solid #edf0f1" }} />
+          <Divider style={{ border: "0.5px solid #edf0f1", marginTop:"0.5rem" }} />
           <Title
             level={5}
             style={{
               textAlign: "center",
+              marginTop: "-1rem",
             }}
           >
             Already have an account?
             <Link href="/login">
-              <a href="/" style={{ color: "red" }}>
+              <a style={{ color: "#ce4c2f" }}>
                 {" "}
                 Login
               </a>
             </Link>
           </Title>
         </form>
+        {/* end input form */}
+        
+        {/* </Card> */}
       </div>
     </>
   );
