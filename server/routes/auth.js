@@ -2,9 +2,11 @@ import express from "express";
 
 const router =  express.Router();
 
-import { register } from "../controller/auth";
+import { register, login } from "../controller/auth";
 
 router.post("/register", register);
+
+router.post("/login", login);
 
 module.exports = router;
 
