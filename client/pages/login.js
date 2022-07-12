@@ -23,10 +23,10 @@ const Login = () => {
         password,
       });
       console.log("login Data", data);
-      // toast.success("Login Successful");
-      // setLoading(false);
+      toast.success("Login Successful");
+      setLoading(false);
     } catch (err) {
-      // toast.error(err.response.data);
+      toast.error(err.response.data);
       setLoading(false);
     }
   };
