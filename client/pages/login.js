@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Divider, Typography, Button, Card, Tooltip } from "antd";
 import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { Context } from "../context";
+import { useRouter } from "next/router";
 
 
 const { Title } = Typography;
@@ -14,6 +16,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const {state, dispatch} = useContext(Context);
+
+  //router
+  const router = useRouter();
+
+  // console.log("state", state);
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevents page from refreshing on submit
     try {
@@ -22,9 +31,21 @@ const Login = () => {
         email,
         password,
       });
-      console.log("login Data", data);
-      toast.success("Login Successful");
+      // console.log("login Data", data);
+
+      dispatch({
+        type: "LOGIN",
+        payload: data,
+      });
+
+      // save context to localStorage
+      localStorage.setItem("user", JSON.stringify(data));
+      // toast.success("Login Successful");
       setLoading(false);
+
+      //redirect
+      router.push("/");
+      
     } catch (err) {
       toast.error(err.response.data);
       setLoading(false);
