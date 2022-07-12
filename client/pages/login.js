@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 import { Divider, Typography, Button, Card, Tooltip } from "antd";
 import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
-
 import { Context } from "../context";
+import { useRouter } from "next/router";
 
 
 const { Title } = Typography;
@@ -17,6 +17,9 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const {state, dispatch} = useContext(Context);
+
+  //router
+  const router = useRouter();
 
   // console.log("state", state);
 
@@ -34,9 +37,15 @@ const Login = () => {
         type: "LOGIN",
         payload: data,
       });
-      
-      toast.success("Login Successful");
+
+      // save context to localStorage
+      localStorage.setItem("user", JSON.stringify(data));
+      // toast.success("Login Successful");
       setLoading(false);
+
+      //redirect
+      router.push("/");
+      
     } catch (err) {
       toast.error(err.response.data);
       setLoading(false);
