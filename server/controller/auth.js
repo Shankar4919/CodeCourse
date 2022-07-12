@@ -68,9 +68,9 @@ export const login = async (req, res) => {
         return res.status(400).send("Invalid password");
     }
     
-    //create token
+    //create signed token
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET_KEY, {
-        expiresIn: "1h",
+        expiresIn: "7d",
     });
 
     // return user and token to client, exclude hashed password
@@ -82,9 +82,7 @@ export const login = async (req, res) => {
     });
     
     //send user as json response to client
-    res.json(user);
-    
-    return res.json({ token });
+    return res.json(user);
 
   } catch (err) {
     console.log(err);
