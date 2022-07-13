@@ -17,7 +17,7 @@ import {
 
 const { Search } = Input;
 
-const { Item, SubMenu } = Menu; // destructuring so that we can use Item instead of Menu.Item
+const { Item, SubMenu, ItemGroup } = Menu; // destructuring so that we can use Item instead of Menu.Item
 
 const TopNav = () => {
   const router = useRouter();
@@ -114,23 +114,28 @@ const TopNav = () => {
 
       {/*  logout  */}
       {user !== null && (
-        <SubMenu
-          icon={<CoffeeOutlined />}
-          title={user && user.name}
-        >
-          <Item
-            icon={<LogoutOutlined />}
-            onClick={logout}
-            style={{
-              alignItems: "center",
-              display: "inline-flex",
-            }}
-          >
-            Logout
-          </Item>
+        <SubMenu icon={<CoffeeOutlined />} title={user && user.name}>
+          <ItemGroup>
+
+            <Item key="/user">
+              <Link href="/user">
+                <a>User</a>
+              </Link>
+            </Item>
+
+            <Item
+              icon={<LogoutOutlined />}
+              onClick={logout}
+              style={{
+                alignItems: "center",
+                display: "inline-flex",
+              }}
+            >
+              Logout
+            </Item>
+          </ItemGroup>
         </SubMenu>
       )}
-
     </Menu>
   );
 };

@@ -109,7 +109,7 @@ export const currentUser = async (req, res) => {
    
     const user = await User.findById(req.user).exec();
     // console.log("User are", user);
-    return res.json(user);
+    return res.json({ok:true});
   } catch (err) {
     console.log(err);
   }
