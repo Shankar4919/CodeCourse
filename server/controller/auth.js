@@ -104,11 +104,16 @@ export const logout = async (req, res) => {
 
 //current user/ verified users
 export const currentUser = async (req, res) => {
+  // console.log(req.body);
   try {
-    const user = await User.findById(req.user._id).select("-password").exec();
-    console.log("Current User", user);
+   
+    const user = await User.findById(req.user).exec();
+    // console.log("User are", user);
     return res.json(user);
   } catch (err) {
     console.log(err);
   }
 };
+
+
+
