@@ -6,6 +6,8 @@ import mongoose from 'mongoose'; // to connect to mongoDB
 
 import csrf from 'csurf';   // to protect from cross-site request forgery
 
+import cookieParser from 'cookie-parser'; // to parse cookies
+
 import { readdirSync } from 'fs';  // readdirSync is a function that reads a directory and returns an array of files
 
 // importing morgan package using import syntax gives an errors so use require syntax to import it
@@ -35,6 +37,7 @@ mongoose.connect(process.env.DATABASE, {
 
 app.use(cors()); // enable cors
 app.use(express.json());  // parse incoming requests data to json
+app.use(cookieParser());  // we need this because "cookie" is true in csrfProtection
 app.use(morgan('dev'));  // log requests to console
 app.use((req, res, next) => {
     console.log("I am middleware");
