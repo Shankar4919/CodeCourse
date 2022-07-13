@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Typography, Divider, Card } from "antd";
 import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { Context } from "../context";
+import { useRouter } from "next/router";
 
 const { Title } = Typography;
 
@@ -13,6 +15,17 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const { state } = useContext(Context);
+  const { user } = state;
+  const router = useRouter();
+
+  //Protecting pages from loggedin user
+  useEffect(() => {
+    if (user !== null) {
+      router.push("/");
+    }
+  }, [user]);
 
   // console.log(process.env.NEXT_PUBLIC_API);
 
