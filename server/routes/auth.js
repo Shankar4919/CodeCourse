@@ -2,13 +2,15 @@ import express from "express";
 
 const router =  express.Router();
 
-import { register, login, logout } from "../controller/auth";
+//middleware
+import { requireSignin } from "../middlewares";
+
+import { register, login, logout, currentUser } from "../controller/auth";
 
 router.post("/register", register);
-
 router.post("/login", login);
-
-router.post("/logout", logout);
+router.get("/logout", logout);
+router.get("/current-user", requireSignin, currentUser);
 
 module.exports = router;
 

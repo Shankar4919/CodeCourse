@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Divider, Typography, Button, Card, Tooltip } from "antd";
@@ -17,9 +17,17 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const {state, dispatch} = useContext(Context);
+  const { user } = state;
 
   //router
   const router = useRouter();
+
+  //Protecting pages from loggedin user
+  useEffect(() => {
+    if (user !== null) {
+      router.push("/");
+    }
+  }, [user]);
 
   // console.log("state", state);
 

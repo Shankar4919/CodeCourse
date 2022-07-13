@@ -100,4 +100,20 @@ export const logout = async (req, res) => {
     console.log(err);
     return res.status(400).send("Error! Try again");
   }
-}
+};
+
+//current user/ verified users
+export const currentUser = async (req, res) => {
+  // console.log(req.body);
+  try {
+   
+    const user = await User.findById(req.user).exec();
+    // console.log("User are", user);
+    return res.json({ok:true});
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+

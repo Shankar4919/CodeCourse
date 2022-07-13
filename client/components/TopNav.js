@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 
 import {
   AppstoreOutlined,
+  CoffeeOutlined,
   LoginOutlined,
   LogoutOutlined,
   UserAddOutlined,
@@ -16,14 +17,15 @@ import {
 
 const { Search } = Input;
 
-const { Item } = Menu; // destructuring so that we can use Item instead of Menu.Item
+const { Item, SubMenu, ItemGroup } = Menu; // destructuring so that we can use Item instead of Menu.Item
 
 const TopNav = () => {
   const router = useRouter();
   const [current, setCurrent] = useState("");
-  
 
   const { state, dispatch } = useContext(Context);
+
+  const { user } = state; // getting user from state
 
   useEffect(() => {
     process.browser && setCurrent(window.location.pathname); // if we are in the browser then set the current pathname as the current
@@ -33,7 +35,7 @@ const TopNav = () => {
   const logout = async () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("user");
-    const { data } = await axios.post("/api/logout");
+    const { data } = await axios.get("/api/logout");
     toast.success(data.message);
     router.push("/login");
   };
@@ -77,46 +79,63 @@ const TopNav = () => {
         style={{ width: 400, padding: "0.4rem" }}
       />
 
-      <Item
-        icon={<LoginOutlined />}
-        key="/login"
-        onClick={(e) => setCurrent(e.key)}
-        style={{
-          alignItems: "center",
-          display: "inline-flex",
-        }}
-      >
-        <Link href="/login">
-          <a>Login</a>
-        </Link>
-      </Item>
+      {/* user and register */}
+      {user === null && (
+        <>
+          <Item
+            icon={<LoginOutlined />}
+            key="/login"
+            onClick={(e) => setCurrent(e.key)}
+            style={{
+              alignItems: "center",
+              display: "inline-flex",
+            }}
+          >
+            <Link href="/login">
+              <a>Login</a>
+            </Link>
+          </Item>
 
-      <Item
-        icon={<UserAddOutlined />}
-        key="/register"
-        onClick={(e) => setCurrent(e.key)}
-        style={{
-          alignItems: "center",
-          display: "inline-flex",
-        }}
-      >
-        <Link href="/register">
-          <a>Register</a>
-        </Link>
-      </Item>
+          <Item
+            icon={<UserAddOutlined />}
+            key="/register"
+            onClick={(e) => setCurrent(e.key)}
+            style={{
+              alignItems: "center",
+              display: "inline-flex",
+            }}
+          >
+            <Link href="/register">
+              <a>Register</a>
+            </Link>
+          </Item>
+        </>
+      )}
 
-      <Item
-        icon={<LogoutOutlined />}
-        onClick={logout}
-        style={{
-          alignItems: "center",
-          display: "inline-flex",
-          float: "end",
-        }}
-      >
-        Logout
-      </Item>
+      {/*  logout  */}
+      {user !== null && (
+        <SubMenu icon={<CoffeeOutlined />} title={user && user.name}>
+          <ItemGroup>
 
+            <Item key="/user">
+              <Link href="/user">
+                <a>User</a>
+              </Link>
+            </Item>
+
+            <Item
+              icon={<LogoutOutlined />}
+              onClick={logout}
+              style={{
+                alignItems: "center",
+                display: "inline-flex",
+              }}
+            >
+              Logout
+            </Item>
+          </ItemGroup>
+        </SubMenu>
+      )}
     </Menu>
   );
 };
