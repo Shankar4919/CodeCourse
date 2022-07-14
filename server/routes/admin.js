@@ -303,4 +303,41 @@ router.post("/courseDelete", async (req, res) => {
 });
 
 
+router.put("/courseEdit", upload.single("image"), async (req, res) => {
+    const { courseId } = req.body;
+    const course = await Course.findById(courseId);
+    if (!course) {
+        return res.status(404).json({
+            error: "Course not found"
+        });
+    }
+    const { name, description, image, difficulty, videos } = req.body;
+    if(image !== course.image){
+        await cloudinary.uploader.destroy(course.cloudinaryId);
+        const result = await cloudinary.uploader.upload(req.file.path);
+        const imageUrl = result.secure_url;
+        await Course.findByIdAndUpdate(courseId, {
+            name,
+            description,
+            image: imageUrl,
+            difficulty,
+            videos: JSON.parse(videos),
+            cloudinaryId: result.public_id
+        });
+    }
+    else{
+        await Course.findByIdAndUpdate(courseId, {
+            name,
+            description,
+            image,
+            difficulty,
+            videos: JSON.parse(videos)
+        });
+    }
+    return res.status(200).json({
+        message: "Course updated successfully"
+    });
+});
+
+
 module.exports = router;
