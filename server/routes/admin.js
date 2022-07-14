@@ -163,6 +163,38 @@ router.get("/track/:id", async (req, res) => {
     });
 });
 
+router.put("/track/:id", upload.single("image"), async (req, res) => {
+    const { id } = req.params;
+    const track = await Track.findById(id);
+    if (!track) {
+        return res.status(404).json({
+            error: "Track not found"
+        });
+    }
+    const { name, description, image } = req.body;
+    if(image !== track.image){
+        await cloudinary.uploader.destroy(track.cloudinaryId);
+        const result = await cloudinary.uploader.upload(req.file.path);
+        const imageUrl = result.secure_url;
+        await Track.findByIdAndUpdate(id, {
+            name,
+            description,
+            image: imageUrl,
+            cloudinaryId: result.public_id
+        });
+    }
+    else{
+        await Track.findByIdAndUpdate(id, {
+            name,
+            description,
+            image
+        });
+    }
+    return res.status(200).json({
+        "message": "Track updated successfully"
+    });
+});
+
 
 
 module.exports = router;
