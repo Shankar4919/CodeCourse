@@ -281,6 +281,26 @@ router.post("/addCourse", upload.single("image"), async (req, res) => {
 });
 
 
+router.post("/courseDelete", async (req, res) => {
+    const { id, trackId } = req.body;
+    const course = await Course.findById(id);
+    if (!course) {
+        return res.status(404).json({
+            error: "Course not found"
+        });
+    }
+    await cloudinary.uploader.destroy(course.cloudinaryId);
+    await Course.findByIdAndDelete(id);
+    await Track.findByIdAndUpdate(trackId, {
+        $pull: {
+            courses: id
+        }
+    });
+    const courses = await Track.findById(trackId).populate("courses");
+    return res.status(200).json({
+        courses: courses
+    });
+});
 
 
 module.exports = router;
