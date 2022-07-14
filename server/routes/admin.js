@@ -196,5 +196,27 @@ router.put("/track/:id", upload.single("image"), async (req, res) => {
 });
 
 
+router.post("/addTrack", upload.single("image"), async (req, res) => {
+    cloudinary.uploader.upload(req.file.path, async (err, result) => {
+        if (err) {
+            return res.status(500).json({
+                error: "Internal server error"
+            });
+        }
+        const { name, description } = req.body;
+        const track = await Track.create({
+            name,
+            description,
+            image: result.secure_url,
+            cloudinaryId: result.public_id
+        });
+        return res.status(201).json({
+            track: track
+        });
+    });
+});
+
+
+
 
 module.exports = router;
