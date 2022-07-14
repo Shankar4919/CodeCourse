@@ -246,6 +246,41 @@ router.get("/course/:courseId", async (req, res) => {
     });
 });
 
+router.post("/addCourse", upload.single("image"), async (req, res) => {
+    const { id } = req.body;
+    const track = await Track.findById(id);
+    if (!track) {
+        return res.status(404).json({
+            error: "Track not found"
+        });
+    }
+    const { name, description, image, difficulty, videos } = req.body;
+    cloudinary.uploader.upload(req.file.path, async (err, result) => {
+        if (err) {
+            return res.status(500).json({
+                error: "Internal server error"
+            });
+        }
+        const videos2 = JSON.parse(videos);
+        const course = await Course.create({
+            name,
+            description,
+            image: result.secure_url,
+            difficulty,
+            videos: videos2,
+            track: id,
+            cloudinaryId: result.public_id
+        });
+        await course.save();
+        await track.courses.push(course);
+        await track.save();
+        return res.status(201).json({
+            course: course
+        });
+    });
+});
+
+
 
 
 module.exports = router;
