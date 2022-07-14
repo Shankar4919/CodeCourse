@@ -1,0 +1,22 @@
+.about{
+    padding-top: 10vh;
+    background-color: #ffffff;
+    padding-bottom: 10vh;
+    /* margin-bottom: 10vh; */
+}
+
+.about .about-text h1{
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.about .about-text p{
+    font-size: 20px;
+    font-weight: 400;
+    color: #000;
+}
+
+.about .about-image{
+    width: 650px;
+    border-radius: 20px;
+}
