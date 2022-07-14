@@ -100,5 +100,30 @@ router.post("/login", async (req, res) => {
 });
 
 
+router.post("/verifyToken",async (req, res) => {
+    const { adminToken } = req.body;
+    try{
+        const decoded = jwt.verify(adminToken, process.env.JWT_SECRET);
+        const admin = await Admin.findById(decoded.id);
+        if (admin) {
+            return res.status(200).json({
+                admin: admin
+            });
+        }
+        else {
+            return res.status(401).json({
+                error: "Admin not found"
+            });
+        }
+    }
+    catch(err){
+        return res.status(401).json({
+            error: "Invalid token"
+        });
+    }
+});
+
+
+
 
 module.exports = router;
