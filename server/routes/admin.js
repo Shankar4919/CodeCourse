@@ -142,6 +142,17 @@ router.post("/trackDelete", async (req, res) => {
 });
 
 
+router.get("/tracks", async (req, res) => {
+    const tracks = await Track.find({});
+    return res.status(200).json({
+        tracks: tracks
+    });
+});
+
+
+
+
+
 
 
 module.exports = router;
