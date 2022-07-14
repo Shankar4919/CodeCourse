@@ -124,6 +124,24 @@ router.post("/verifyToken",async (req, res) => {
 });
 
 
+router.post("/trackDelete", async (req, res) => {
+    const { id } = req.body;
+    const track = await Track.findById(id);
+    if (!track) {
+        return res.status(404).json({
+            error: "Track not found"
+        });
+    }
+    await cloudinary.uploader.destroy(track.cloudinaryId);
+    await Track.findByIdAndDelete(id);
+    await Course.updateMany({}, {$pull: {tracks: id}});
+    const tracks = await Track.find({});
+    return res.status(200).json({
+        tracks: tracks
+    });
+});
+
+
 
 
 module.exports = router;
