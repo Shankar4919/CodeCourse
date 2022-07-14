@@ -233,6 +233,19 @@ router.get("/courses/:id", async (req, res) => {
 });
 
 
+router.get("/course/:courseId", async (req, res) => {
+    const { courseId } = req.params;
+    const course = await Course.findById(courseId);
+    if (!course) {
+        return res.status(404).json({
+            error: "Course not found"
+        });
+    }
+    return res.status(200).json({
+        course: course
+    });
+});
+
 
 
 module.exports = router;
