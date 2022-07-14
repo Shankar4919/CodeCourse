@@ -150,8 +150,18 @@ router.get("/tracks", async (req, res) => {
 });
 
 
-
-
+router.get("/track/:id", async (req, res) => {
+    const { id } = req.params;
+    const track = await Track.findById(id);
+    if (!track) {
+        return res.status(404).json({
+            error: "Track not found"
+        });
+    }
+    return res.status(200).json({
+        track: track
+    });
+});
 
 
 
