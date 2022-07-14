@@ -217,6 +217,22 @@ router.post("/addTrack", upload.single("image"), async (req, res) => {
 });
 
 
+router.get("/courses/:id", async (req, res) => {
+    const { id } = req.params;
+    const courses = await Track.findById(id).populate("courses");
+    const track = await Track.findById(id);
+    if (!courses) {
+        return res.status(404).json({
+            error: "Course not found"
+        });
+    }
+    return res.status(200).json({
+        courses: courses,
+        track: track
+    });
+});
+
+
 
 
 module.exports = router;
