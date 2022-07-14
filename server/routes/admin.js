@@ -12,6 +12,17 @@ const Course = require("../models/course.model");
 const saltRounds = parseInt(process.env.SALT_ROUNDS);
 
 
+const {
+    CLOUD_NAME,
+    API_KEY,
+    API_SECRET,
+} = process.env;
+
+cloudinary.config({
+    cloud_name: CLOUD_NAME,
+    api_key: API_KEY,
+    api_secret: API_SECRET,
+});
 
 const storage = multer.diskStorage({
     filename: function (req, file, cb) {
@@ -53,5 +64,41 @@ router.post("/register", async (req, res) => {
         }
     });
 });
+
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+    const admin = await Admin.findOne({
+        email: email
+    });
+    if (!admin) {
+        return res.status(401).json({
+            error: "Admin not found"
+        });
+    }
+    bcrypt.compare(password, admin.password, async (err, result) => {
+        if (err) {
+            return res.status(401).json({
+                error: "Password incorrect"
+            });
+        }
+        if (result) {
+            const token = jwt.sign({
+                id: admin._id
+            }, process.env.JWT_SECRET, {
+                expiresIn: "1h"
+            });
+            return res.status(200).json({
+                adminToken: token,
+            });
+        }
+        else {
+            return res.status(401).json({
+                error: "Password incorrect"
+            });
+        }
+    });
+});
+
+
 
 module.exports = router;
