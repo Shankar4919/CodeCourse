@@ -92,8 +92,8 @@ export default function Login() {
               </div>
             </div>
             <div className="justify-content-left buttons">
-              <button>Login</button>
-              <button onClick={handleSignupClick}>Signup</button>
+              <button className="login-button">Login</button>
+              <button onClick={handleSignupClick} className="signup-button">Signup</button>
             </div>
           </div>
 
