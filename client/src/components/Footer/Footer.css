@@ -1,10 +1,12 @@
 .footer{
     padding-top: 5vh;
-    background-color: #23cf6e;
+    background-color: #ecfdec;
     /* set footer to bottom */
     position: relative;
     bottom: 0;
     width: 100%;
+    border-top: 1px solid #ecfdec;
+    padding-bottom: 4vh;
 }
 
 .footer .colum{
@@ -13,18 +15,21 @@
 
 .footer .footer-logo img{
     width:170px;
+    height: auto;
 }
 .footer .footer-text h2{
     font-size: 1.8rem;
+    font-weight: bold;
+    color: #259455;
 }
 .footer .footer-text p{
     font-size: 18px;
     font-weight: 400;
-    color: #fff;
+    color: black;
 }
 
 .footer .footer-text p a{
-    color: #000;
+    color: #259455;
     font-weight: 600;
     
 }
@@ -33,27 +38,31 @@
     padding-left: 0px;
 }
 
+.footer .footer-contact h2{
+    color:#259455;
+}
+
 .footer .footer-contact a{
     text-decoration: none;
-    color: #fff;
+    color: black;
     padding: 5px;
     font-size: 20px;
 }
 
 .footer .footer-contact .contact-icon{
-    color: #000;
+    color: #259455;
     font-size: 1.6rem;
 }
 
 .footer .footer-contact p{
-    color: #fff;
+    color: black;
     font-size: 20px;
 }
 
 /* footer-icon on hover rotate animation */
 .footer .footer-text .footer-icon{
     padding-right: 10px;
-    color:white;
+    color:black;
     transition: 0.4s;
 
 }

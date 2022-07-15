@@ -5,17 +5,18 @@
     width: 100%;
     z-index: 1;
     background-color: #fff;
-    border-bottom: 1px solid #e5e5e5;
+    /* border-bottom: 1px solid #d1d1d1; */
     border-radius: 0;
-    box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    box-shadow: 0 2px 0 rgba(0,0,0,.05);
     padding-left: 30px;
     padding-right: 30px;
     margin-bottom: 0;
 }
+
     
 .nav-logo{
-    width: 180px;
-    height: 80px;
+    width: 130px;
+    height: 60px;
 }
 
 .navbar-links{
@@ -26,8 +27,7 @@
 .navbar-links span{
     text-decoration: none;
     color: #000;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 18px;   
     padding: 10px;
     margin-left: 10px;
     margin-right: 10px;
@@ -49,14 +49,12 @@
 }
 
 .navbar .buttons button{
-    color: #fff;
-    background-color: #13bd5d;
     border: none;
-    border-radius: 15px;
-    width: 120px;
+    border-radius: 1px;
+    width: 100px;
+    border-radius: 10px;
     box-shadow: 0 1px 0 rgba(0,0,0,.05);
     font-size: 18px;
-    font-weight: 600;
     padding: 8px;
     margin-left: 10px;
     margin-right: 10px;
@@ -64,7 +62,18 @@
     transition: all .2s ease-in-out;
 }
 
+.navbar .buttons .login-button{
+    background-color: white;
+    border: 1px solid #259455;
+    color: black;
+}
+
+.navbar .buttons .sign-button{
+    background-color:#259455;
+}
+
 /* add hover scale animation */
 .navbar .buttons button:hover{
     transform: scale(1.1);
+
 }

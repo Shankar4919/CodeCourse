@@ -15,8 +15,9 @@ export default function Category() {
   };
 
   return (
-    <Container name="about" className="category">
-      <h1 className="category-heading">Different Tracks Available</h1>
+    <div style={{backgroundColor:"white"}}>
+    <Container name="about" className="category" >
+      <h5 className="category-heading">Different Tracks Available</h5>
       <Row>
         <Col>
           <Card className="category-card" style={{ width: "22rem" }}>
@@ -108,5 +109,6 @@ export default function Category() {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 }
