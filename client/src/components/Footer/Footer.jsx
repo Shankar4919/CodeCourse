@@ -31,29 +31,12 @@ export default function Footer() {
                 We are a team of students who are passionate about learning and
                 sharing knowledge. We are always open to new ideas and
                 collaborations. If you have any questions, please contact us at{" "}
-                <a href="mailto:aadityasinghal1978@gmai.com">Here</a><br/>
+                <a href="mailto:itsme.shankar8@gmai.com">Here</a><br/>
                 Copyright © 2022, All rights reserved.
               </p>
             </div>
           </Col>
           <Col className="colum">
-            <Row>
-              <div className="footer-contact">
-                <h2>Contact Us</h2>
-                <Row>
-                  <a href="mailto:support@codeclub.com">
-                    <MdEmail className="contact-icon"/>{" "}
-                    support@codeclub.com
-                  </a>
-                </Row>
-                <Row>
-                  <p>
-                    <FaPhoneAlt className="contact-icon"/>{" "}
-                    +91-9888888888
-                  </p>
-                </Row>
-              </div>
-            </Row>
             <Row>
               <div className="footer-text">
                 <h2>Follow Us</h2>

@@ -1,34 +1,42 @@
 .home-container{
     padding-top: 20vh;
-    /* background-color: #d5f7d5; */
     background-color: #ecfdec;
     padding-bottom: 10vh;
 }
 
 
 .header .heading{
-    font-size: 50px;
-    font-weight: 600;
+    font-size: 45px;
+    font-weight: bold;
     margin-bottom: 20px;
+    color: rgb(42, 41, 41);
 }
 
 .header .sub-heading{
-    color: #000;
-    font-size: 25px;
+    color: #259455;
+    font-size: 20px;
     font-weight: 600;
-    color: #178d4a;
+    
 }
 .header .join-button{
     text-align: center;
-    width: 220px;
-    height: 60px;
-    background-color: #13bd5d;
-    border: 0px solid #000;
+    width: 150px;
+    height: 50px;
+    background-color: white;
+    border: 1px solid #259455;
     border-radius: 10px;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 600;
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
     padding: 8px;
+    transition: all .2s ease-in-out;
+}
+
+.header .join-button:hover{
+    transform: scale(1.1);
+    background-color: #259455;
+    color:white;
+    box-shadow: rgba(0,0,0,.05);
 }
 
 .banner{

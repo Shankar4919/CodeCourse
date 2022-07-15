@@ -105,12 +105,12 @@ export default function Register() {
               </div>
             </div>
             <div className="justify-content-left buttons">
-              <button onClick={handleLoginClick}>Login</button>
-              <button>Signup</button>
+              <button onClick={handleLoginClick} className="login-button">Login</button>
+              <button className="signup-button">Signup</button>
             </div>
           </div>
 
-          <div className="register-container">
+          <div className="register-container"> 
             <Container>
               <Row>
                 <Col>
