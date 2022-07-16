@@ -31,7 +31,104 @@ import "./Practice.css";
 export default function Practice() {
   const navigate = useNavigate();
 
-  
+  const [loading, setLoading] = useState(false);
+
+  const [name, setName] = useState("");
+  const [code, setCode] = useState("");
+  const [language, setLanguage] = useState("c_cpp");
+  const [theme, setTheme] = useState("github");
+  const [compiling, setCompiling] = useState(false);
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const [time, setTime] = useState("");
+  const [memory, setMemory] = useState("");
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      fetch(`/api/user/verifyToken`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: localStorage.getItem("token"),
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.user) {
+            localStorage.removeItem("token");
+            navigate("/");
+          } else {
+            setName(data.user.name);
+          }
+        });
+    }
+
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2500);
+  }, [navigate]);
+
+  const handleCodeCompile = () => {
+    setCompiling(true);
+    let newInput;
+    if (input === "") {
+      newInput = null;
+    } else {
+      newInput = input;
+    }
+    let languageCode;
+    if (language === "c_cpp") {
+      languageCode = 76;
+    } else if (language === "python") {
+      languageCode = 71;
+    } else if (language === "javascript") {
+      languageCode = 63;
+    } else if (language === "golang") {
+      languageCode = 60;
+    } else if (language === "java") {
+      languageCode = 62;
+    } else if (language === "ruby") {
+      languageCode = 72;
+    } else if (language === "php") {
+      languageCode = 68;
+    } else if (language === "csharp") {
+      languageCode = 51;
+    } else if (language === "typescript") {
+      languageCode = 74;
+    }
+    fetch(`/api/user/compile`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        code: code,
+        language: languageCode,
+        input: newInput,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCompiling(false);
+        if (data.output.stderr) {
+          setError(true);
+          setErrorMessage(data.output.stderr);
+        } else {
+          setError(false);
+          setErrorMessage("");
+          setOutput(data.output.stdout);
+          setTime(data.output.time);
+          setMemory(data.output.memory);
+        }
+      });
+  };
 
   return (
     <div style={{backgroundColor:"white"}}>
