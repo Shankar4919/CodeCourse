@@ -24,6 +24,31 @@ export default function UserNavBar() {
 
   const [email, setEmail] = useState("");
 
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      fetch(`/api/user/verifyToken`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: localStorage.getItem("token"),
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.user) {
+            localStorage.removeItem("token");
+            navigate("/");
+          }
+          else{
+            setEmail(data.user.email);
+          }
+        });
+    }
+  }, [navigate]);
 
   const handleLogOut = (e) => {
     e.preventDefault();
