@@ -18,7 +18,70 @@ export default function TrackHome() {
   const [userCoursesIds, setUserCoursesIds] = useState([]);
   const [userCourses, setUserCourses] = useState([]);
 
-  
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      fetch(`/api/user/verifyToken`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: localStorage.getItem("token"),
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.user) {
+            localStorage.removeItem("token");
+            navigate("/");
+          }
+        });
+    }
+
+    fetch(`/api/user/getTrackById`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+        token: localStorage.getItem("token"),
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setTrack(data.track);
+        setCourses(data.courses.courses);
+        setUserCoursesIds(data.userCoursesIds);
+        setUserCourses(data.userCourses);
+      });
+
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, [id, navigate]);
+
+  const handleStartCourse = (courseId) => {
+    fetch(`/api/user/startCourse`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        courseId: courseId,
+        token: localStorage.getItem("token"),
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          navigate(`/course/${courseId}`);
+        }
+      });
+  };
 
   return (
     <div>
