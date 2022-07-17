@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+
+.main-track .main-heading h1{
+    font-size: 3rem;
+    /* font-family: 'Roboto Slab', serif; */
+    color: #000;
+    text-align: center;
+    margin-top: 3rem;
+    /* text-decoration: underline; */
+}
+
+.main-track .track-heading{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    color: #178D4A;
+    font-family: 'Roboto Slab', serif;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+
+.main-track .card-course button{
+    margin-top: 2.5vh;
+    padding: 0.5rem 0.5rem;
+    background-color: #15aa55;
+    width: 9rem;
+}
