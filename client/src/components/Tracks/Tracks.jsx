@@ -12,6 +12,45 @@ export default function Tracks() {
   const [loading, setLoading] = useState(false);
   const [tracks, setTracks] = useState([]);
 
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      fetch(`/api/user/verifyToken`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: localStorage.getItem("token"),
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.user) {
+            localStorage.removeItem("token");
+            navigate("/");
+          }
+        });
+    }
+
+    fetch(`/api/user/getAllTracks`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setTracks(data.tracks);
+      });
+
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, [navigate]);
+
   return (
     <div>
       {loading ? (
