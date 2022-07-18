@@ -9,6 +9,63 @@ import "./Compete.css";
 export default function Compete() {
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false);
+
+  const [name, setName] = useState("");
+  const [key, setKey] = useState("all");
+  const [contestData, setContestData] = useState([]);
+
+  const siteLists = [
+    "CodeForces",
+    "TopCoder",
+    "LeetCode",
+    "CodeChef",
+    "HackerRank",
+    "HackerEarth",
+    "Kick Start",
+  ];
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      fetch(`/api/user/verifyToken`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: localStorage.getItem("token"),
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.user) {
+            localStorage.removeItem("token");
+            navigate("/");
+          } else {
+            setName(data.user.name);
+          }
+        });
+    }
+
+    fetch(`/api/user/contests`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setContestData(data.contests);
+      });
+
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2500);
+  }, [navigate]);
+
   return (
     <div>
       {loading ? (
