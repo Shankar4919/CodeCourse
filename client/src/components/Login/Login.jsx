@@ -97,7 +97,7 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="login-container">
+          <div className="login-container" style={{backgroundColor:"#fff"}}>
             <Container>
               <Row>
                 <Col>
@@ -108,7 +108,7 @@ export default function Login() {
                     <Button className="register-button" onClick={handleSignupClick}>SIGNUP</Button>
                     <Button className="login-button">SIGNIN</Button>
                   </div>
-                  <Card className="login-card" style={{ width: "30rem" }}>
+                  <Card className="login-card" style={{ width: "30rem", backgroundColor:" #d5f7d5" }}>
                     <Card.Title>Sign in into Your Account</Card.Title>
                     <Card.Body>
                       <Form

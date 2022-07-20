@@ -17,6 +17,7 @@ import CourseHome from "./components/CourseHome/CourseHome";
 import Analytics from "./components/Analytics/Analytics";
 import Compete from "./components/Compete/Compete";
 import Practice from "./components/Practice/Practice";
+import app from "./App.css";
 
 function App() {
   return (
