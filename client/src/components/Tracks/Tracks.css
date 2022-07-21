@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
 
 .tracks{
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-top: 5vh;
+    padding-bottom: 10vh;
+
 }
 
 .tracks .main-heading h2{
@@ -19,21 +20,24 @@
 }
 
 .tracks .tracks-card .card{
-    width: 28rem;
+    width: 18rem;
     margin-top: 6vh;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);   
+    box-shadow: 0px 0px 2px 0px #13bd5d;   
     cursor: pointer;
     border-radius: 12px;
+    background-color: #ecfdec;
     transition: transform 0.3s;
+    align-items: center;
 }
 
 .tracks .tracks-card .card:hover{
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);   
-    transform: translateY(-0.5rem);
+    box-shadow: 0px 0px 10px #13bd5d;
+    transform: scale(1.07);
 }
 
 .tracks .tracks-card .card .card-img-top{
-    height: 12rem;
+    height: 10rem;
+    width: 10rem;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
@@ -41,17 +45,18 @@
 .tracks .tracks-card .card .card-title{
     color: #13c560;
     font-family: 'Roboto Slab', serif;
-    font-size: 2.7rem;
+    font-size: 2rem;
+    padding-top: 3vh;
 }
 
 .tracks .tracks-card .card .card-text{
-    margin-top: 2.5vh;
+    margin-top: 1vh;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.2rem;
 }
 
 .tracks .tracks-card .card button{
-    margin-top: 2.5vh;
+    margin-bottom: 2vh;
     padding: 0.5rem 0.5rem;
     background-color: #15aa55;
     width: 7rem;

@@ -149,7 +149,7 @@ export default function UserHome() {
       {loading ? (
         <PreLoader />
       ) : (
-        <div>
+        <div style={{backgroundColor:"#fff"}}>
           {/* Navbar compnent */}
           <UserNavBar />
 

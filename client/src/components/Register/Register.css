@@ -71,24 +71,31 @@
 
 .register-container{
     padding-top: 20vh;
-    background-color:#d5f7d5;
     padding-bottom: 10vh;
 }
 
 .register-container .auth-image{
     /* aling image DIV to center */
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     height: 600px;
+    margin-right: 100px;
 }
 
 .register-container .left-logo{
     width: 550px;
 }
 
+.register-container .register-card{
+    margin-left: 50px;
+    margin-bottom: 10vh;
+}
+
+
 .register-container .card-top{
     position: relative;
+    margin-left: 50px;
 }
 
 .register-container .register-button{
@@ -96,7 +103,7 @@
     width: 15rem;
     height: 5rem;
     color: #13bd5d;
-    background-color: #fff;
+    background-color: #ecfdec;
     text-align: center;
     text-decoration: none;
     font-weight: 600;
@@ -108,7 +115,7 @@
     width: 15rem;
     height: 5rem;
     color: #000;
-    background-color: #d5f7d5;
+    background-color: #fff;
     text-align: center;
     text-decoration: none;
     font-weight: 600;

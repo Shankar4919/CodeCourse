@@ -70,25 +70,31 @@
 }
 
 .login-container {
-    padding-top: 17vh;
-    background-color:#fff;
+    padding-top: 10vh;
     padding-bottom: 10vh;
 }
 
 .login-container .auth-image{
     /* aling image DIV to center */
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     height: 450px;
+    margin-right: 100px;
 }
 
 .login-container .left-logo{
     width: 550px;
 }
 
+.login-container .login-card{
+    margin-left: 50px;
+    margin-bottom: 10vh;
+}
+
 .login-container .card-top{
     position: relative;
+    margin-left: 50px;
 }
 
 .login-container .register-button{
@@ -108,7 +114,7 @@
     width: 15rem;
     height: 5rem;
     color: #13bd5d;
-    background-color:  #d5f7d5;
+    background-color:  #ecfdec;
     text-align: center;
     text-decoration: none;
     font-weight: 600;

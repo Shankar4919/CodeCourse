@@ -52,7 +52,7 @@ export default function Register() {
       }, 3000);
     } else {
       // const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/user/register`, {
-        const response = await fetch(`/api/user/register`, {
+      const response = await fetch(`/api/user/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,11 +65,10 @@ export default function Register() {
       });
 
       const data = await response.json();
-      if(response.status === 201) {
+      if (response.status === 201) {
         localStorage.setItem("token", data.token);
         navigate("/home");
-      }
-      else{
+      } else {
         setError(true);
         setErrorMessage(data.error);
         setName("");
@@ -105,14 +104,29 @@ export default function Register() {
               </div>
             </div>
             <div className="justify-content-left buttons">
-              <button onClick={handleLoginClick} className="login-button">Login</button>
+              <button onClick={handleLoginClick} className="login-button">
+                Login
+              </button>
               <button className="signup-button">Signup</button>
             </div>
           </div>
 
-          <div className="register-container"> 
+          <div
+            className="register-container"
+            style={{ backgroundColor: "#fff" }}
+          >
             <Container>
               <Row>
+                <Col>
+                  <div className="auth-image">
+                    <img
+                      className="left-logo"
+                      src={authImage}
+                      alt="left-logo"
+                    />
+                  </div>
+                </Col>
+
                 <Col>
                   <div className="card-top">
                     <div className="card-icon">
@@ -123,7 +137,10 @@ export default function Register() {
                       SIGNIN
                     </Button>
                   </div>
-                  <Card className="register-card" style={{ width: "30rem" }}>
+                  <Card
+                    className="register-card"
+                    style={{ width: "30rem", backgroundColor: "#ecfdec" }}
+                  >
                     <Card.Title>Create Your Account</Card.Title>
                     <Card.Body>
                       <Form
@@ -210,15 +227,6 @@ export default function Register() {
                       </Form>
                     </Card.Body>
                   </Card>
-                </Col>
-                <Col>
-                  <div className="auth-image">
-                    <img
-                      className="left-logo"
-                      src={authImage}
-                      alt="left-logo"
-                    />
-                  </div>
                 </Col>
               </Row>
             </Container>
