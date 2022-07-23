@@ -134,14 +134,13 @@ export default function Analytics() {
       {loading ? (
         <PreLoader />
       ) : (
-        <div>
+        <div style={{backgroundColor:"#fff"}}>
           {/* Navbar compnent */}
           <UserNavBar />
 
           {/* main heading */}
           <div className="analytics container">
             <h2>Hello {name}</h2>
-            <h6 className="sub-head">What's up going on !!</h6>
 
             {/* alaytics section */}
             <div className="analytics-main container">

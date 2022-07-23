@@ -20,23 +20,28 @@
 
 .main-track .card-course{
     width: 26rem;
-    margin-bottom: 3rem;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);   
+    margin-bottom: 4rem;
+    box-shadow: 0px 0px 2px 0px #13bd5d; 
     cursor: pointer;
     border-radius: 12px;
+    background-color: #fafafa;
     transition: transform 0.3s;
+    align-items: center;
+    
 }
 
 .main-track .card-course:hover{
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);   
+    box-shadow: 0px 0px 2px 0px #13bd5d; 
     transform: translateY(-0.5rem);
 }
 
 .main-track .card-course .card-img{
-    width: 100%;
+    width: 15rem;
     height: 15rem;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    padding: 0.5rem;
+    margin-top: 1rem;
 }
 
 .main-track .card-course .card-title{
@@ -51,9 +56,10 @@
     font-size: 1.1rem;
 }
 
-.main-track .card-course button{
-    margin-top: 2.5vh;
+.main-track .card-course Button{
     padding: 0.5rem 0.5rem;
+    display: block;
     background-color: #15aa55;
     width: 9rem;
+    border: 1px solid #259455;
 }

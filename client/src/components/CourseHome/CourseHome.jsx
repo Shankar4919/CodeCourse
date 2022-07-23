@@ -188,7 +188,7 @@ export default function CourseHome() {
       {loading ? (
         <PreLoader />
       ) : (
-        <div>
+        <div style={{backgroundColor:"#fff"}}>
           {/* Navbar compnent */}
           <UserNavBar />
 

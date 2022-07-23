@@ -105,7 +105,7 @@ export default function UserNavBar() {
               className="userProfile"
             >
               <NavDropdown.Item className="drop-point">
-                <RiCopperCoinLine /> CodeCoins - 0{" "}
+                <RiCopperCoinLine /> CodeCoins - 0{""}
               </NavDropdown.Item>
               <NavDropdown.Item>
                 <CgProfile /> My Profile

@@ -1,5 +1,6 @@
 .main-course {
-  padding: 2rem 4rem;
+  padding-top: 4rem;
+  margin-left: 12rem;
 }
 .main-course .main-course-container {
   display: flex;

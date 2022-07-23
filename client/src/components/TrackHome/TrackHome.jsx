@@ -88,14 +88,14 @@ export default function TrackHome() {
       {loading ? (
         <PreLoader />
       ) : (
-        <div>
+        <div style={{backgroundColor:"#fff"}}>
           {/* Navbar compnent */}
           <UserNavBar />
 
           <div className="main-track container">
             {/* main heading */}
             <div className="main-heading">
-              <h1>CodeClub - {track.name} Track</h1>
+              <h1>CodeCourse - {track.name} Track</h1>
             </div>
 
             <div>
@@ -120,10 +120,17 @@ export default function TrackHome() {
                           <Card.Text>{course.description}</Card.Text>
                             <ProgressBar
                               now={userCourses.find(userCourse => userCourse.course === course._id).progress/course.videos.length * 100}
+                              style={{marginBottom:"10px"}}
                             />
                           <Button
                             variant="primary"
                             onClick={() => navigate(`/course/${course._id}`)}
+                            style={{
+                              textAlign: "center",
+                              margin: "auto",
+                              display: "block",
+                              
+                            }}
                           >
                              <FaArrowRight /> Continue
                           </Button>

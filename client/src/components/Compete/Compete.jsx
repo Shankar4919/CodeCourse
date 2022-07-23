@@ -71,7 +71,7 @@ export default function Compete() {
       {loading ? (
         <PreLoader />
       ) : (
-        <div>
+        <div style={{backgroundColor:"#fff"}}>
           {/* Navbar compnent */}
           <UserNavBar />
 
