@@ -63,7 +63,7 @@ export default function AdminHome() {
   };
 
   return (
-    <div>
+    <div style={{backgroundColor:"#fff"}}>
       <div className="container admin-home">
         {/*Main Heading */}
         <div className="admin-home-heading">
@@ -116,7 +116,10 @@ export default function AdminHome() {
                   {tracks.map((track) => (
                     <tr key={track._id}>
                       <td>
-                        <img src={track.image} alt={track.name} />
+                        <img src={track.image} alt={track.name} style={{
+                          width: "7rem",
+                          height: "7rem",
+                        }}/>
                       </td>
                       <td className="title">{track.name}</td>
                       <td className="desc">{track.description}</td>

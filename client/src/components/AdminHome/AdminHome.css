@@ -37,6 +37,7 @@
 
 .admin-home .admin-track .add-track button{
     background-color: #13c560;
+    border-color: white;
     color: #fff;
     padding: 0.5rem 0.5rem;
     border-radius: 8px;
@@ -79,15 +80,10 @@
     background-color: #b9e6cc;
 }
 
-.admin-home .admin-track .tracks tbody img{
-    height: 10rem;
-    width: 20rem;
-}
-
 .admin-home .admin-track .tracks tbody .title{
     color: #000;
     font-family: 'Roboto Slab', serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .admin-home .admin-track .tracks tbody .desc{
@@ -118,8 +114,9 @@
 }
 
 .admin-home .admin-logout button{
-    background-color: #13c560;
-    color: #fff;
+    background-color: #fff;
+    border-color: #000;
+    color: black;
     padding: 0.5rem 0.5rem;
     border-radius: 8px;
     font-family: 'Roboto Slab', serif;
