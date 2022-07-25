@@ -156,7 +156,7 @@ export default function UserHome() {
           {/* main heading */}
           <div className="user-home container">
             <h2>Hello {name}</h2>
-            <h6 className="sub-head">What's up going on !!</h6>
+            <h6 className="sub-head">Let's Go!</h6>
 
             {/* alaytics section */}
             <div className="home-analytic container">

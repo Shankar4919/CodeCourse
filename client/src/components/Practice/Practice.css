@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 .practice{
-    margin-top: 2vh;
+    margin-top: 4vh;
 }
 
 .practice .editor{
     margin-top: 4vh;
-    margin-bottom: 8vh;
+    margin-bottom: 18vh;
 }
 
 .practice .editor h3{

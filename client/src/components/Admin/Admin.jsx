@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, Form, Button } from "react-bootstrap";
+import { Container, Card, Form, Button, Col, Row } from "react-bootstrap";
 import "./Admin.css";
+import icon from "../../images/icon.png";
+import authImage from "../../images/auth-image.png";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ export default function Admin() {
   useEffect(() => {
     if (localStorage.getItem("adminToken")) {
       // fetch(`${process.env.REACT_APP_BASE_URL}/api/admin/verifyToken`, {
-        fetch(`/api/admin/verifyToken`, {
+      fetch(`/api/admin/verifyToken`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,61 +74,75 @@ export default function Admin() {
   };
 
   return (
-    <div>
-      <div className="container login">
-        <div className="login-heading">
-          <h1>Admin Home</h1>
-        </div>
-        <div
-          className="container"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <Card className="card-login">
-            <Card.Title>Login</Card.Title>
-            <Card.Body>
-              <Form
-                className="login-form"
-                noValidate
-                validated={validated}
-                onSubmit={handleSubmit}
-              >
-                <Form.Group className="mb-3" controlId="formEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Enter Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please enter valid email.
-                  </Form.Control.Feedback>
-                </Form.Group>
+    <div className="login-container" style={{ backgroundColor: "#fff" }}>
+      <Container>
+        <Row>
+          <Col>
+            <div className="auth-image">
+              <img className="left-logo" src={authImage} alt="left-logo" />
+            </div>
+          </Col>
 
-                <Form.Group className="mb-3" controlId="formPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    required
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please enter Password.
-                  </Form.Control.Feedback>
-                </Form.Group>
+          <Col>
+            <div className="card-top">
+              <div className="card-icon">
+                <img src={icon} alt="icon" />
+              </div>
+              <Button className="register-button"></Button>
+              <Button className="login-button">SIGNIN</Button>
+            </div>
+            <Card
+              className="login-card"
+              style={{ width: "30rem", backgroundColor: "#ecfdec" }}
+            >
+              <Card.Title>Login Into Admin Account</Card.Title>
+              <Card.Body>
+                <Form
+                  className="login-form"
+                  noValidate
+                  validated={validated}
+                  onSubmit={handleSubmit}
+                >
+                  <Form.Group className="mb-3" controlId="formEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please enter valid email.
+                    </Form.Control.Feedback>
+                  </Form.Group>
 
-                <Button className="submit-button" type="submit">
-                  LOG IN
-                </Button>
-                <div className="error-message">{error ? errorMessage : ""}</div>
-              </Form>
-            </Card.Body>
-          </Card>
-        </div>
-      </div>
+                  <Form.Group className="mb-3" controlId="formPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      required
+                      type="password"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please enter Password.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+
+                  <Button className="submit-button" type="submit">
+                    SIGN IN
+                  </Button>
+                  <div className="error-message">
+                    {error ? errorMessage : ""}
+                  </div>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
