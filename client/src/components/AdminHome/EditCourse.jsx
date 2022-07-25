@@ -90,7 +90,7 @@ export default function EditCourse() {
   };
 
   return (
-    <div>
+    <div style={{backgroundColor:"#fff"}}>
       <div className="edit-track-div">
         <Card className="add-track-card">
           <Card.Title>Edit Course</Card.Title>

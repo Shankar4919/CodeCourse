@@ -36,7 +36,7 @@ export default function AdminTrack() {
             localStorage.removeItem("adminToken");
             navigate("/admin_login");
           } else {
-            fetch(`/api/admin/courses/${id}` , {
+            fetch(`/api/admin/courses/${id}`, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
@@ -70,7 +70,7 @@ export default function AdminTrack() {
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#fff" }}>
       <div className="container admin-home">
         {/*Main Heading */}
         <div className="admin-home-heading">
@@ -112,7 +112,14 @@ export default function AdminTrack() {
                     <>
                       <tr key={course._id}>
                         <td>
-                          <img src={course.image} alt={course.name} />
+                          <img
+                            src={course.image}
+                            alt={course.name}
+                            style={{
+                              width: "7rem",
+                              height: "7rem",
+                            }}
+                          />
                         </td>
                         <td className="title">{course.name}</td>
                         <td className="desc">{course.description}</td>
